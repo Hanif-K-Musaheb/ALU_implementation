@@ -1,2 +1,2 @@
 # ALU_implementation
-CS2210A: Computer Organization: ALU implementation
+> CS2210A: Computer Organization
