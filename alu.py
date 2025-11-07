@@ -180,16 +180,16 @@ class Alu:
 
         a &= WORD_MASK  # Keep this line as is
 
-        if b>0:
-            result=a<<b
-            bit_out=(a>>(WORD_SIZE-b))&1 # this checks if the last bit out was a 1
+        if b > 0:
+            result = a << b
+            bit_out = (a >> (WORD_SIZE - b)) & 1 # this checks if the last bit out was a 1
 
-        elif b<0:
-            result=a>>abs(b)## absolute value as other wise it would be going the other way because its a negative     
+        elif b < 0:
+            result = a >> abs(b)## absolute value as otherwise it would be going the other way because its a negative
             bit_out = (a >> (abs(b) - 1)) & 1# this checks if the last bit out was a 1
         else:
-            result=a
-            bit_out=0
+            result = a
+            bit_out = 0
 
         # Keep these last two lines as they are
         self._update_shift_flags(result, bit_out)
@@ -207,6 +207,7 @@ class Alu:
 
     def _update_logic_flags(self, result):
         pass  # replace pass with correct implementation
+
 
     def _update_arith_flags_add(self, a, b, result):
         """
