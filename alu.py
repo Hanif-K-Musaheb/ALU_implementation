@@ -134,19 +134,36 @@ class Alu:
         """
         SUB
         """
-        pass  # replace pass with correct implementation
+
+        a = a & WORD_MASK## this part makes sure both inputs are of a fixed width
+        b = b & WORD_MASK
+        result = (a - b) & WORD_MASK## binary subtraction then forces the bit width
+        self._update_arith_flags_sub(a,b,result)
+        return result
+
 
     def _and(self, a, b):
         """
         Bitwise AND
         """
-        pass  # replace pass with correct implementation
+        a = a & WORD_MASK## this part makes sure both inputs are of a fixed width
+        b = b & WORD_MASK
+        result = (a&b) & WORD_MASK#binary and operation
+        self._update_logic_flags(a,b,result)
+        return result
 
     def _or(self, a, b):
         """
         Bitwise OR
         """
-        pass  # replace pass with correct implementation
+
+        a = a & WORD_MASK## this part makes sure both inputs are of a fixed width
+        b = b & WORD_MASK
+        result = (a|b) & WORD_MASK#binary or operation
+        self._update_logic_flags(a,b,result)
+        return result
+
+        
 
     def _shft(self, a, b):
         """
@@ -157,11 +174,22 @@ class Alu:
         Keep in mind when we shift we need to keep track of the
         last bit shifted out. This is used to set the carry flag.
         """
-        a &= WORD_MASK  # Keep this line as is
-
         # Replace these two lines with a complete implementation
         result = 0
         bit_out = 0
+
+        a &= WORD_MASK  # Keep this line as is
+
+        if b>0:
+            result=a<<b
+            bit_out=(a>>(WORD_SIZE-b))&1 # this checks if the last bit out was a 1
+
+        elif b<0:
+            result=a>>abs(b)## absolute value as other wise it would be going the other way because its a negative     
+            bit_out = (a >> (abs(b) - 1)) & 1# this checks if the last bit out was a 1
+        else:
+            result=a
+            bit_out=0
 
         # Keep these last two lines as they are
         self._update_shift_flags(result, bit_out)
