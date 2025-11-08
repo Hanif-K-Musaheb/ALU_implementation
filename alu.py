@@ -149,7 +149,7 @@ class Alu:
         a = a & WORD_MASK## this part makes sure both inputs are of a fixed width
         b = b & WORD_MASK
         result = (a&b) & WORD_MASK#binary and operation
-        self._update_logic_flags(a,b,result)
+        self._update_logic_flags(result) #FIXED the only argument required is result
         return result
 
     def _or(self, a, b):
@@ -157,10 +157,10 @@ class Alu:
         Bitwise OR
         """
 
-        a = a & WORD_MASK## this part makes sure both inputs are of a fixed width
+        a = a & WORD_MASK ## this part makes sure both inputs are of a fixed width
         b = b & WORD_MASK
-        result = (a|b) & WORD_MASK#binary or operation
-        self._update_logic_flags(a,b,result)
+        result = (a|b) & WORD_MASK #binary or operation
+        self._update_logic_flags(result) #FIXED the only argument required is result
         return result
 
         
@@ -208,6 +208,12 @@ class Alu:
     def _update_logic_flags(self, result):
         pass  # replace pass with correct implementation
 
+        if result & (1 << (WORD_SIZE - 1)):
+            self._flags |= N_FLAG
+
+        if result == 0:
+            self._flags |= Z_FLAG
+
 
     def _update_arith_flags_add(self, a, b, result):
         """
@@ -227,7 +233,32 @@ class Alu:
             self._flags |= V_FLAG
 
     def _update_arith_flags_sub(self, a, b, result):
-        pass  # replace pass with correct implementation
+
+        if result & (1 << (WORD_SIZE - 1)):
+            self._flags |= N_FLAG
+
+        if result == 0:
+            self._flags |= Z_FLAG
+
+        if a < b:
+            self._flags |= C_FLAG
+
+        sa, sb, sr = ((a >> (WORD_SIZE - 1)) & 1,
+                      (b >> (WORD_SIZE - 1)) & 1,
+                      (result >> (WORD_SIZE - 1)) & 1)
+
+        if sa != sb and sr != sa:
+            self._flags |= V_FLAG
+
 
     def _update_shift_flags(self, result, bit_out):
         pass  # replace pass with correct implementation
+
+        if result & (1 << (WORD_SIZE - 1)):
+            self._flags |= N_FLAG
+
+        if result == 0:
+            self._flags |= Z_FLAG
+
+        if bit_out != 0:
+            self._flags |= C_FLAG
