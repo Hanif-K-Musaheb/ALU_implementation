@@ -141,7 +141,6 @@ class Alu:
         """
         SUB
         """
-
         a = a & WORD_MASK## this part makes sure both inputs are of a fixed width
         b = b & WORD_MASK
         result = (a - b) & WORD_MASK## binary subtraction then forces the bit width
@@ -188,12 +187,14 @@ class Alu:
         a &= WORD_MASK  # Keep this line as is
 
         if b > 0:
-            result = a << b
-            bit_out = (a >> (WORD_SIZE - b)) & 1 # this checks if the last bit out was a 1
+            shift_amount = b % WORD_SIZE # this ensures that b can be computed regardless of being a decimal or integer value
+            result = (a << shift_amount) & WORD_MASK #(FIX) needed result to be masked
+            bit_out = (a >> (WORD_SIZE - 1)) & 1 # this checks if the last bit out was a 1 (FIX) needed to be subtracted by 1 instead of b
 
         elif b < 0:
-            result = a >> abs(b)## absolute value as otherwise it would be going the other way because its a negative
-            bit_out = (a >> (abs(b) - 1)) & 1# this checks if the last bit out was a 1
+            shift_amount = abs(b) % WORD_SIZE  # this ensures that b can be computed regardless of being a decimal or integer value
+            result = (a >> shift_amount) & WORD_MASK## absolute value as otherwise it would be going the other way because it's a negative (FIX) needed result to be masked
+            bit_out = (a >> (shift_amount - 1)) & 1# this checks if the last bit out was a 1
         else:
             result = a
             bit_out = 0
@@ -247,7 +248,7 @@ class Alu:
         if result == 0:
             self._flags |= Z_FLAG
 
-        if a < b:
+        if a >= b:
             self._flags |= C_FLAG
 
         sa, sb, sr = ((a >> (WORD_SIZE - 1)) & 1,
