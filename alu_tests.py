@@ -109,7 +109,7 @@ if __name__ == '__main__':
 
         {'opcode': 0b100, 'mnemonic': 'SHFT',
          'a': 1, 'b': 0x8001, 'expected': 0,
-         'flags': {'zero': True, 'negative': False, 'carry': True, 'overflow': False},
+         'flags': {'zero': True, 'negative': False, 'carry': True, 'overflow': False}, #FAILED!
          'comment': 'Right shift by 1; LSB shifted out sets carry.'},
 
         {'opcode': 0b100, 'mnemonic': 'SHFT',
@@ -149,7 +149,7 @@ if __name__ == '__main__':
 
         {'opcode': 0b100, 'mnemonic': 'SHFT',
          'a': 0b0000000000000010, 'b': 0x800F, 'expected': 0,
-         'flags': {'zero': True, 'negative': False, 'carry': False, 'overflow': False},
+         'flags': {'zero': True, 'negative': False, 'carry': False, 'overflow': False}, #Failed!
          'comment': 'Right shift by 15 clears all bits; final bit out sets carry.'},
 
         {'opcode': 0b100, 'mnemonic': 'SHFT',

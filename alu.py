@@ -184,20 +184,22 @@ class Alu:
         result = 0
         bit_out = 0
 
+
         a &= WORD_MASK  # Keep this line as is
+        msb = (b >> (WORD_SIZE - 1)) & 1
+        shift_amount = abs(b) % WORD_SIZE
 
-        if b > 0:
-            shift_amount = b % WORD_SIZE # this ensures that b can be computed regardless of being a decimal or integer value
-            result = (a << shift_amount) & WORD_MASK #(FIX) needed result to be masked
-            bit_out = (a >> (WORD_SIZE - 1)) & 1 # this checks if the last bit out was a 1 (FIX) needed to be subtracted by 1 instead of b
-
-        elif b < 0:
-            shift_amount = abs(b) % WORD_SIZE  # this ensures that b can be computed regardless of being a decimal or integer value
-            result = (a >> shift_amount) & WORD_MASK## absolute value as otherwise it would be going the other way because it's a negative (FIX) needed result to be masked
-            bit_out = (a >> (shift_amount - 1)) & 1# this checks if the last bit out was a 1
-        else:
+        if shift_amount == 0:
             result = a
             bit_out = 0
+
+        elif msb == 0:
+            result = (a << shift_amount) & WORD_MASK
+            bit_out = (a >> (WORD_SIZE - shift_amount)) & 1
+
+        elif msb == 1:
+            result = (a >> shift_amount) & WORD_MASK
+            bit_out = (a >> (shift_amount - 1)) & 1
 
         # Keep these last two lines as they are
         self._update_shift_flags(result, bit_out)
@@ -260,7 +262,6 @@ class Alu:
 
 
     def _update_shift_flags(self, result, bit_out):
-        pass  # replace pass with correct implementation
 
         if result & (1 << (WORD_SIZE - 1)):
             self._flags |= N_FLAG
