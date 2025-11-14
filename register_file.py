@@ -67,7 +67,10 @@ class RegisterFile:
         # Make sure `idx` is in the desired range, otherwise raise an
         # `IndexError` with message "Register index out of bounds!" This
         # method needn't have an explicit return. Replace `pass` below.
-        pass
+
+        if idx < 0 or idx > 7:
+            raise IndexError("Register index out of bounds!")
+
 
     def _read(self, ra, rb):
         """
