@@ -5,7 +5,7 @@
 |----|----|------|
 |read (register file)|Hanif| |
 |write (register file)|Hanif|  |
-execute|Kemp|  |
+__init__|Kemp|  |
 check index|Kemp|  |
 read (register)| Max| |
 write (register)| Max|  |
