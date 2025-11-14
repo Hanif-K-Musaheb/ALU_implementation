@@ -7,3 +7,12 @@
 
 <img width="321" alt="image" src="https://github.com/user-attachments/assets/5d957674-0311-4a7f-8a51-38de3bd972fc" />
 
+|function|person|complete|
+|----|----|------|
+|read (register file)|Hanif| |
+|write (register file)|Hanif|  |
+execute|Kemp|  |
+check index|Kemp|  |
+read (register)| Max| |
+write (register)| Max|  |
+
