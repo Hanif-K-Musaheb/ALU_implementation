@@ -3,8 +3,8 @@
 
 |function|person|complete|
 |----|----|------|
-|read (register file)|Hanif| |
-|write (register file)|Hanif|  |
+|read (register file)|Hanif| Yes|
+|write (register file)|Hanif| Yes|
 __init__|Kemp|  |
 check index|Kemp|  |
 read (register)| Max| |
