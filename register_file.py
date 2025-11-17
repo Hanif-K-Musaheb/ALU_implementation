@@ -21,8 +21,8 @@ class Register:
     of values they can store (and not much else).
     """
 
-    MAX_VALUE = 2**WORD_SIZE - 1
-    MIN_VALUE = -(2**WORD_SIZE - 1)  # or 0 - 2 ** WORD_SIZE - 1 ?
+    MAX_VALUE = 2 ** WORD_SIZE - 1
+    MIN_VALUE = -(2 ** WORD_SIZE - 1)  # or 0 - 2 ** WORD_SIZE - 1 ?
 
     def __init__(self, name):
         self.name = name
@@ -30,7 +30,7 @@ class Register:
 
     def read(self):
         # Just a getter for value. Replace `pass` below.
-        pass
+        return self.value
 
     def write(self, value):
         # Registers themselves don't know about write enable. It's the register
@@ -38,10 +38,15 @@ class Register:
         # should reject values that are too wide (too many bits). Use class
         # constants here, and raise `ValueError` on bad value, otherwise set
         # the value field. Replace `pass` below.
-        pass
+
+        if value > Register.MAX_VALUE | (value < Register.MIN_VALUE):
+            raise ValueError("The value provided is outside the bounds of available register values")
+        else:
+            self.value = value
 
     def __repr__(self):
         return f"{self.name}: {self.value:04X}"
+
 
 
 class RegisterFile:
@@ -53,11 +58,11 @@ class RegisterFile:
     NUM_REGISTERS = 8
 
     def __init__(self):
-        self.registers=[] # i just added this to make my code make sense for now you cna delete this to code the proper version -Hanif
         # When we instantiate our register file, we should instantiate eight
         # register objects and include them in a list `self.registers`. Note:
         # register objects should each get a unique name, R0, R1, R2, etc.
         # apart from their index in the list. Replace `pass` below.
+        self.registers = []  # i just added this to make my code make sense for now you cna delete this to code the proper version -Hanif
         pass
 
     def _check_index(self, idx):
