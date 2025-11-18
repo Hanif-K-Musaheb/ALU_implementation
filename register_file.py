@@ -63,14 +63,22 @@ class RegisterFile:
         # register objects should each get a unique name, R0, R1, R2, etc.
         # apart from their index in the list. Replace `pass` below.
         self.registers = []  # i just added this to make my code make sense for now you cna delete this to code the proper version -Hanif
-        R0 = Register()
-        R1 = Register()
-        R2 = Register()
-        R3 = Register()
-        R4 = Register()
-        R5 = Register()
-        R6 = Register()
-        R7 = Register()
+        R0 = Register("R0")
+        self.registers.append(R0)
+        R1 = Register("R1")
+        self.registers.append(R1)
+        R2 = Register("R2")
+        self.registers.append(R2)
+        R3 = Register("R3")
+        self.registers.append(R3)
+        R4 = Register("R4")
+        self.registers.append(R4)
+        R5 = Register("R5")
+        self.registers.append(R5)
+        R6 = Register("R6")
+        self.registers.append(R6)
+        R7 = Register("R7")
+        self.registers.append(R7)
 
 
 
