@@ -27,13 +27,21 @@ class Memory:
     def _check_addr(self, address):
         # Make sure address is positive, in the desired range,
         # otherwise raise a `ValueError`. Replace `pass` below.
-        pass
+
+        if not(address>=0 and address<=65535):#!!! i am assuming is an int not a hex here
+            raise ValueError("address out of bounds")
+
 
     def write_enable(self, b):
         # Make sure `b` is a Boolean (hint: use `isinstance()).
         # If not, raise `TypeError`. If OK, then set
         # `_write_enable` accordingly. Replace `pass` below.
-        pass
+        if isinstance(b,bool):
+            self._write_enable = b
+        else:
+            raise TypeError("write_enable: must be boolean")
+        
+
 
     def read(self, addr):
         """
