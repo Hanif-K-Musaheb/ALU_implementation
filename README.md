@@ -11,8 +11,8 @@
 |read (register)| Max| |
 |write (register)| Max|  |
 |**memory.py**|----|-----|
-|_check_addr| |yes|
-|write_enable| |yes|
+|_check_addr|Hanif|yes|
+|write_enable|Hanif|yes|
 |read| | |
 |write| | |
 |Load_program| | |
