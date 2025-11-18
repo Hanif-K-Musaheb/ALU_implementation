@@ -39,7 +39,7 @@ class Register:
         # constants here, and raise `ValueError` on bad value, otherwise set
         # the value field. Replace `pass` below.
 
-        if value > Register.MAX_VALUE | (value < Register.MIN_VALUE):
+        if value > Register.MAX_VALUE or (value < Register.MIN_VALUE):
             raise ValueError("The value provided is outside the bounds of available register values")
         else:
             self.value = value
