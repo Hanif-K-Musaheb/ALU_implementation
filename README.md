@@ -3,12 +3,23 @@
 
 |function|person|complete|
 |----|----|------|
+|**register_file.py**|----|----|
 |read (register file)|Hanif| Yes|
 |write (register file)|Hanif| Yes|
-__init__|Kemp|  |
-check index|Kemp|  |
-read (register)| Max| |
-write (register)| Max|  |
+|__init__|Kemp|  |
+|check index|Kemp|  |
+|read (register)| Max| |
+|write (register)| Max|  |
+|**memory.py**|----|-----|
+|_check_addr| | |
+|write_enable| | |
+|read| | |
+|write| | |
+|Load_program| | |
+
+
+
+
 
 > CS2210A: Computer Organization
 
