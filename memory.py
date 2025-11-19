@@ -145,9 +145,9 @@ class InstructionMemory(Memory):
         # done. (Hint: use `try`/`finally`.) Replace `pass` below.
 
         self._loading = True
-        self._write_enable = True
 
         for offset, word in enumerate(words):
+            self._write_enable = True
             super().write(start_addr + offset, word)
 
         self._loading = False
