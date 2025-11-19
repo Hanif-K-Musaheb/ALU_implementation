@@ -66,6 +66,13 @@ class Memory:
         if not self._write_enable:
             raise RuntimeError
 
+        else:
+            if self._check_addr(addr):
+                fullBit = value & 0xFFFF
+                self._cells[addr] = fullBit
+                self.write_enable = False
+
+
 
         return True
 
