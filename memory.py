@@ -70,7 +70,7 @@ class Memory:
             if self._check_addr(addr):
                 fullBit = value & 0xFFFF
                 self._cells[addr] = fullBit
-                self.write_enable = False
+                self._write_enable = False
                 return True
         # I believe this is done
 
@@ -147,9 +147,11 @@ class InstructionMemory(Memory):
         self._loading = True
         self._write_enable = True
 
-        for word in words:
+        for offset, word in enumerate(words):
             super().write(start_addr + offset, word)
 
+        self._loading = False
+        self._write_enable = False
 
 
 if __name__ == "__main__":
