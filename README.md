@@ -1,21 +1,21 @@
 # ALU_implementation
 #### [Basic Specification](https://brightspace.uvm.edu/d2l/le/content/134185/viewContent/2462217/View)
 
-|function|person|complete|
-|----|----|------|
-|**register_file.py**|----|----|
-|read (register file)|Hanif| Yes|
-|write (register file)|Hanif| Yes|
-|__init__|Kemp|  |
-|check index|Kemp|  |
-|read (register)| Max| |
-|write (register)| Max|  |
-|**memory.py**|----|-----|
-|_check_addr|Hanif|yes|
-|write_enable|Hanif|yes|
-|read| | |
-|write| | |
-|Load_program| | |
+|function| person | complete |
+|----|--------|----------|
+|**register_file.py**| ----   | ----     |
+|read (register file)| Hanif  | Yes      |
+|write (register file)| Hanif  | Yes      |
+|__init__| Kemp   | yes      |
+|check index| Kemp   | yes      |
+|read (register)| Max    |          |
+|write (register)| Max    |          |
+|**memory.py**| ----   | -----    |
+|_check_addr| Hanif  | yes      |
+|write_enable| Hanif  | yes      |
+|read|        |          |
+|write| Kemp   | yes      |
+|Load_program|        |          |
 
 
 

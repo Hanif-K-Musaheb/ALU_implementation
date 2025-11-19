@@ -71,10 +71,8 @@ class Memory:
                 fullBit = value & 0xFFFF
                 self._cells[addr] = fullBit
                 self.write_enable = False
-
-
-
-        return True
+                return True
+        # I believe this is done
 
     def hexdump(self, start=0, stop=None, width=8):
         """
