@@ -60,7 +60,10 @@ class Memory:
         # Otherwise, call `_check_addr()`. If OK, write masked value to the
         # selected address, then turn off `_write_enable` when done. Return
         # `True` on success. Replace `pass` below.
-        pass
+        if not self._write_enable:
+            raise RuntimeError
+
+
         return True
 
     def hexdump(self, start=0, stop=None, width=8):
