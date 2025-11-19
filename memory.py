@@ -28,8 +28,10 @@ class Memory:
         # Make sure address is positive, in the desired range,
         # otherwise raise a `ValueError`. Replace `pass` below.
 
-        if not(address>=0 and address<=65535):#!!! i am assuming is an int not a hex here
+        if not(address>=0 and address<=65535):#!!! I am assuming is an int not a hex here
             raise ValueError("address out of bounds")
+        else:
+            return True
 
 
     def write_enable(self, b):
@@ -49,8 +51,9 @@ class Memory:
         """
         # Make sure `addr` is OK by calling `_check_addr`. If OK, return value
         # from `_cells` or default if never written. (Hint: use `.get()`.)
-        # Replace `pass` below.
-        pass
+        if self._check_addr(self, addr):
+            return self._cells.get(addr, 0)
+
 
     def write(self, addr, value):
         """
