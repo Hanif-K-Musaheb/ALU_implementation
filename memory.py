@@ -51,7 +51,7 @@ class Memory:
         """
         # Make sure `addr` is OK by calling `_check_addr`. If OK, return value
         # from `_cells` or default if never written. (Hint: use `.get()`.)
-        if self._check_addr(self, addr):
+        if self._check_addr(addr):
             return self._cells.get(addr, 0)
 
 
@@ -138,13 +138,18 @@ class InstructionMemory(Memory):
         """
         Load list of 16-bit words into consecutive memory cells.
         """
-        self._loading = True
         # Write each word in `words` to successive addresses in instruction
         # memory. Set `_write_enable` as needed can call parent write with
         # `super().write(start_addr + offset, word)` as needed. Important:
         # Ensure that `_loading` and `_write_enable` are set to `False` when
         # done. (Hint: use `try`/`finally`.) Replace `pass` below.
-        pass
+
+        self._loading = True
+        self._write_enable = True
+
+        for word in words:
+            super().write(start_addr + offset, word)
+
 
 
 if __name__ == "__main__":

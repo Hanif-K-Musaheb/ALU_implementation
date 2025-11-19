@@ -108,7 +108,7 @@ def test_load_program_disables_write():
 def test_instruction_memory_write_protected():
     """
     Ensures that instruction memory is locked down after load, and a
-    `RuntimeError` is raised if we attempt write.
+    `RuntimeError` is raised if we attempt to write.
     """
     im = InstructionMemory()
     with pytest.raises(RuntimeError):
