@@ -16,6 +16,10 @@
 |read|  |       |
 |write| Kemp | yes   |
 |Load_program|  |       |
+|**CPU.py**|---------|----------|
+|tick|||
+|_fetch|||
+
 
 
 
