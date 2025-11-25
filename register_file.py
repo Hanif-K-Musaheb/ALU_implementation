@@ -24,6 +24,10 @@ class Register:
     MAX_VALUE = 2 ** WORD_SIZE - 1
     MIN_VALUE = -(2 ** WORD_SIZE - 1)  # or 0 - 2 ** WORD_SIZE - 1 ?
 
+    @property
+    def raw(self):
+        return self.value & 0xFFFF  # always unsigned
+
     def __init__(self, name):
         self.name = name
         self.value = 0
@@ -45,7 +49,7 @@ class Register:
             self.value = value
 
     def __repr__(self):
-        return f"{self.name}: {self.value:04X}"
+        return f"{self.raw:04X}"
 
 
 
