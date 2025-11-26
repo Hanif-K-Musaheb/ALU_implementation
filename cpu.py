@@ -112,9 +112,20 @@ class Cpu:
                         offset = self.sext(self._decoded.imm, 8)
                         self._pc += offset  # take branch
                 case "BNE":
-                    pass  # complete implementation here
+                    """
+                    This is almost an exact copy of the above method except
+                    it is checking if the zero flag isn't set
+                    """
+                    if not self._alu.zero:
+                        offset = self.sext(self._decoded.imm, 8)
+                        self._pc += offset  # take branch
                 case "B":
-                    pass  # complete implementation here
+                    """
+                    This is almost an exact copy of the above  two methods except
+                    it is branching no matter what
+                    """
+                    offset = self.sext(self._decoded.imm, 8)
+                    self._pc += offset  # take branch
                 case "CALL":
                     self._sp -= 1  # grow stack downward
                     # PC is incremented immediately upon fetch so already
