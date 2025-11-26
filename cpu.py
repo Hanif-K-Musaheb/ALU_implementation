@@ -147,7 +147,14 @@ class Cpu:
         self._decoded = Instruction(raw=self._ir)
 
     def _fetch(self):
-        pass  # complete implementation here
+        """
+        Max Hagerman
+        In This method I have followed the instructions on Brightspace.
+        """
+        next_instruct = self._i_mem.read(self._pc) #reads instruction from instruction mem
+                                                   #using value in PC and assigns it to the variable
+        self._ir = next_instruct #sets the value of the
+        self._pc += 1 #increments the program counter by 1
 
     def load_program(self, prog):
         self._i_mem.load_program(prog)
