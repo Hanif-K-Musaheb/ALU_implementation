@@ -178,7 +178,7 @@ class Cpu:
                     # Update PC
                     pass  # complete implementation here
                 case "HALT":
-                    pass  # complete implementation here
+                    self._halt = True
                 case _:  # default
                     raise ValueError(
                         "Unknown mnemonic: " + str(self._decoded) + "\n" + str(self._ir)
