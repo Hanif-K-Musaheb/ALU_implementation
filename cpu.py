@@ -73,7 +73,10 @@ class Cpu:
             # execute...
             match self._decoded.mnem:
                 case "LOADI":
-                    pass  # complete implementation here
+                    data=self.sext(self._decoded.imm,8)
+                    rd =self._decoded.rd
+                    self._regs.execute(rd=rd,data=data,write_enable=True)
+
                 case "LUI":
                     # TODO Refactor for future semester(s) if any.
                     # Cheating for compatibility with released ALU tests
@@ -85,20 +88,53 @@ class Cpu:
                     lower &= 0x00FF  # clear upper bits
                     data = upper | lower
                     self._regs.execute(rd=rd, data=data, write_enable=True)
+
                 case "LOAD":
                     pass  # complete implementation here
+                
                 case "STORE":
                     pass  # complete implementation here
                 case "ADDI":
                     pass  # complete implementation here
                 case "ADD":
-                    pass  # complete implementation here
+                    ra = self._decoded.ra
+                    rb = self._decoded.rb
+                    rd = self._decoded.rd
+
+                    val_a, val_b = self._regs.execute(ra=ra, rb=rb)
+                    self._alu.set_op("ADD")
+                    result = self._alu.execute(val_a, val_b)
+                    self._regs.execute(rd=rd, data=result, write_enable=True)
                 case "SUB":
-                    pass  # complete implementation here
+                    ra = self._decoded.ra
+                    rb = self._decoded.rb
+                    rd = self._decoded.rd
+
+                    val_a, val_b = self._regs.execute(ra=ra, rb=rb)
+                    self._alu.set_op("SUB")
+                    result = self._alu.execute(val_a, val_b)
+                    self._regs.execute(rd=rd, data=result, write_enable=True)
+
                 case "AND":
-                    pass  # complete implementation here
+                    ra = self._decoded.ra
+                    rb = self._decoded.rb
+                    rd = self._decoded.rd
+
+                    val_a, val_b = self._regs.execute(ra=ra, rb=rb)
+                    self._alu.set_op("AND")
+                    result = self._alu.execute(val_a, val_b)
+                    self._regs.execute(rd=rd, data=result, write_enable=True)
+
                 case "OR":
-                    pass  # complete implementation here
+                    ra = self._decoded.ra
+                    rb = self._decoded.rb
+                    rd = self._decoded.rd
+
+                    val_a, val_b = self._regs.execute(ra=ra, rb=rb)
+                    self._alu.set_op("OR")
+                    result = self._alu.execute(val_a, val_b)
+                    self._regs.execute(rd=rd, data=result, write_enable=True)
+
                 case "SHFT":
                     self._alu.set_op("SHFT")
                     rd = self._decoded.rd
