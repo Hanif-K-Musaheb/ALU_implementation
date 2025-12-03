@@ -11,13 +11,13 @@ import sys
 
 import pytest
 
-module_dir = os.path.abspath(".")
+module_dir = os.path.abspath("../Assembly")
 sys.path.insert(0, module_dir)
 
 from assembler import assemble  # noqa: E402
 from cpu import make_cpu  # noqa: E402
 
-with open("asm/power_of_two.asm") as fh:
+with open("../asm/power_of_two.asm") as fh:
     prog = fh.readlines()
 
 for num, line in enumerate(prog):
