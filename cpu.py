@@ -6,6 +6,7 @@ CS 2210 Computer Organization
 Clayton Cafiero <cbcafier@uvm.edu>
 
 STARTER CODE
+commit
 """
 
 from alu import Alu
