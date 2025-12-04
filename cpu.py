@@ -108,14 +108,16 @@ class Cpu:
                     self._d_mem.write_enable(True)
                     self._d_mem.write(addr, val_s)
                 case "ADDI":
+                    self._alu.set_op("ADD")
                     ra = self._decoded.ra
                     rd = self._decoded.rd
                     imm = self.sext(self._decoded.imm, 8)
                     val_a, _ = self._regs.execute(ra = ra)
-                    self._alu.set_op("ADD")
+
                     result = self._alu.execute(val_a, imm)
                     self._regs.execute(rd = rd, data = result, write_enable = True)
                 case "ADD":
+                    self._alu.set_op("ADD")
                     ra = self._decoded.ra
                     rb = self._decoded.rb
                     rd = self._decoded.rd
@@ -125,32 +127,35 @@ class Cpu:
                     result = self._alu.execute(val_a, val_b)
                     self._regs.execute(rd=rd, data=result, write_enable=True)
                 case "SUB":
+                    self._alu.set_op("SUB")
                     ra = self._decoded.ra
                     rb = self._decoded.rb
                     rd = self._decoded.rd
 
                     val_a, val_b = self._regs.execute(ra=ra, rb=rb)
-                    self._alu.set_op("SUB")
+
                     result = self._alu.execute(val_a, val_b)
                     self._regs.execute(rd=rd, data=result, write_enable=True)
 
                 case "AND":
+                    self._alu.set_op("AND")
                     ra = self._decoded.ra
                     rb = self._decoded.rb
                     rd = self._decoded.rd
 
                     val_a, val_b = self._regs.execute(ra=ra, rb=rb)
-                    self._alu.set_op("AND")
+
                     result = self._alu.execute(val_a, val_b)
                     self._regs.execute(rd=rd, data=result, write_enable=True)
 
                 case "OR":
+                    self._alu.set_op("OR")
                     ra = self._decoded.ra
                     rb = self._decoded.rb
                     rd = self._decoded.rd
 
                     val_a, val_b = self._regs.execute(ra=ra, rb=rb)
-                    self._alu.set_op("OR")
+
                     result = self._alu.execute(val_a, val_b)
                     self._regs.execute(rd=rd, data=result, write_enable=True)
 
