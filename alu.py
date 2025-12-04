@@ -127,6 +127,16 @@ class Alu:
         result = self._ops[self._op](a, b)
         return self._to_signed(result)
 
+    def set_op(self, op):
+        """
+        Public-facing setter. Added 2025-11-09. Students will need to add this
+        to their ALU implementation.
+        """
+        if op in self._ops.keys():
+            self._op = op
+        else:
+            raise ValueError(f"Bad op: {op}")
+
     def _add(self, a, b):
         """
         ADD
