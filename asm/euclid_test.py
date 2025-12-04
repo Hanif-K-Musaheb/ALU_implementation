@@ -21,13 +21,13 @@ def gcd(a, b):
     return a
 
 
-module_dir = os.path.abspath(".")
+module_dir = os.path.abspath("../Assembly")
 sys.path.insert(0, module_dir)
 
 from assembler import assemble  # noqa: E402
 from cpu import make_cpu  # noqa: E402
 
-with open("asm/euclid.asm") as fh:
+with open("../asm/euclid.asm") as fh:
     prog = fh.readlines()
 
 load_a = -1  # sentinel
