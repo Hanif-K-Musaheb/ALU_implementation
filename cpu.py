@@ -90,7 +90,9 @@ class Cpu:
                     self._regs.execute(rd=rd, data=data, write_enable=True)
 
                 case "LOAD":
-                    pass  # complete implementation here
+                    ra = self._decoded.ra
+                    rd = self._decoded.rd
+                    imm = self.sext(self._decoded.imm, 8)
                 
                 case "STORE":
                     pass  # complete implementation here
