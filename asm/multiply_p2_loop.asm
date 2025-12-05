@@ -4,7 +4,7 @@
 START:
     LOADI R0, #10    ; constant
     LOADI R1, #0     ; exponent counter (n)
-    LOADI R2, #8     ; final exponent
+    LOADI R2, #9     ; final exponent
     LOADI R4, #0     ; memory index (address)
     LOADI R5, #1     ; increment constant
 
