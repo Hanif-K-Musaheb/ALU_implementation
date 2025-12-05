@@ -17,8 +17,13 @@
 |write| Kemp | yes   |
 |Load_program|  |       |
 |**CPU.py**|---------|----------|
-|tick|||
-|_fetch|||
+|tick||| All |      |
+|_fetch||| Max | yes |
+|**Assembly language**|--------|--------|
+|multiply_p2| Max | yes |
+|multiply_p2_loop| Max |  |
+|divide_p2| Hanif | yes |
+|and_or_p2| Max | |
 
 
 
