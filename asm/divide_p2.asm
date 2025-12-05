@@ -9,8 +9,11 @@
 ; R6 = constant / 32
 ; R7 = constant / 64
 START:
-    LOADI R0, #448
-    LOADI R1, #8006
+    LOADI R0, #0xC0
+    LUI R0, #0x01
+    LOADI R1, #0x06
+    LUI R1, #0x80
+
     LOADI R2, #-1
     SHFT R2, R0, R2
     LOADI R3, #-2
@@ -23,5 +26,5 @@ START:
     SHFT R6, R0, R6
     LOADI R7, #-6
     SHFT R7, R0, R7
-END:
+DONE:
     HALT
