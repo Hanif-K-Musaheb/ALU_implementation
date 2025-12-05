@@ -17,7 +17,7 @@
 |write| Kemp | yes   |
 |Load_program|  |       |
 |**CPU.py**|---------|----------|
-|tick||| Hanif/Kemp/Max |      |
+|tick||| All |      |
 |_fetch||| Max | yes |
 |**Assembly language**|--------|--------|
 |multiply_p2| Max | yes |
