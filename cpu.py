@@ -112,10 +112,11 @@ class Cpu:
                     ra = self._decoded.ra
                     rs = self._decoded.rs
                     imm = self.sext(self._decoded.imm, 8)
-                    val_a, val_s = self._regs.execute(ra = ra, rb = rs)
+                    val_a, val_s = self._regs.execute(ra=ra, rb=rs)
                     addr = (val_a + imm) & 0xFFFF
+                    val_s_unsigned = val_s & 0xFFFF
                     self._d_mem.write_enable(True)
-                    self._d_mem.write(addr, val_s)
+                    self._d_mem.write(addr, val_s_unsigned)
                 case "ADDI":
                     self._alu.set_op("ADD")
                     ra = self._decoded.ra
