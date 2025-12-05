@@ -191,6 +191,7 @@ class Alu:
         last bit shifted out. This is used to set the carry flag.
         """
         # Replace these two lines with a complete implementation
+
         result = 0
         bit_out = 0
 
