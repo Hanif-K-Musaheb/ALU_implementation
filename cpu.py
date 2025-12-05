@@ -100,6 +100,7 @@ class Cpu:
                     data = self._d_mem.read(addr)
                     self._regs.execute(rd = rd, data = data, write_enable = True)
                 case "STORE":
+                    """
                     ra = self._decoded.ra
                     rd = self._decoded.rd
                     imm = self.sext(self._decoded.imm, 8)
@@ -107,6 +108,14 @@ class Cpu:
                     addr = (val_a + imm) & 0xFFFF
                     self._d_mem.write_enable(True)
                     self._d_mem.write(addr, val_d)
+                    """
+                    ra = self._decoded.ra
+                    rs = self._decoded.rs
+                    imm = self.sext(self._decoded.imm, 8)
+                    val_a, val_s = self._regs.execute(ra = ra, rb = rs)
+                    addr = (val_a + imm) & 0xFFFF
+                    self._d_mem.write_enable(True)
+                    self._d_mem.write(addr, val_s)
                 case "ADDI":
                     self._alu.set_op("ADD")
                     ra = self._decoded.ra
