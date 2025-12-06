@@ -7,8 +7,10 @@ START:
     LOADI R0, #0xAA
     LOADI R1, #0x55
     LOADI R2, #0
-    AND R3, R0, R1
-    BEQ END
-    LOAD R2, R3
-END:
+    AND   R3, R0, R1
+    BEQ   R3, #0, ISSAFE
+    B     DONE
+ISSAFE:
+    OR    R2, R0, R1
+DONE:
     HALT
